@@ -62,7 +62,7 @@ public class ReclamosResController {
 	}
 	
 	@PutMapping(path = "/{id}") 
-	public ReclamoDTO altaDeNuevoReclamo(@PathVariable Long id, @RequestBody ReclamoDTO reclamoDTO) {
+	public ReclamoDTO actualizarReclamo(@PathVariable Long id, @RequestBody ReclamoDTO reclamoDTO) {
 		Reclamo reclamo = reclamosService.buscarReclamosPorId(id);
 		reclamo.setTitulo(reclamoDTO.getTitulo());
 		reclamo.setDescripcion(reclamoDTO.getDescripcion());

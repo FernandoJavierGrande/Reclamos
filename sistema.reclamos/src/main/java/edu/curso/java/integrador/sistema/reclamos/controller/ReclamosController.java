@@ -58,14 +58,14 @@ public class ReclamosController {
 			return "/reclamos/nuevo_reclamo";
 		}
 		
-		Long idActual = ReclamoForm.getId();
-		  if(idActual == null) { 
+		Long idForm = ReclamoForm.getId();
+		  if(idForm == null) { 
 			  Reclamo reclamo = new Reclamo();
 			  reclamo.setTitulo(ReclamoForm.getTitulo());
 			  reclamo.setDescripcion(ReclamoForm.getDescripcion());
 			  reclamosService.AltaNuevoReclamo(reclamo);
 		  } else { 
-			  Reclamo reclamo = new Reclamo();
+			  Reclamo reclamo = reclamosService.buscarReclamosPorId(idForm);
 			  reclamo.setTitulo(ReclamoForm.getTitulo());
 			  reclamo.setDescripcion(ReclamoForm.getDescripcion());
 			  reclamosService.actualizarReclamo(reclamo);

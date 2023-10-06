@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		
-		<script src="../js/jquery-3.7.1.js"></script>
-		<script src="../js/bootstrap.js"></script>
-		<script src="../js/bootbox.all.js"></script>
+		<script src="<c:url value="/js/jquery-3.7.1.js" />"></script>
+		<script src="<c:url value="/js/bootstrap.js" />"></script>
+		<script src="<c:url value="/js/bootbox.all.js" />"/></script>
+
+		<script src="<c:url value="/js/jquery.validate.js" />"></script>
+		<script src="<c:url value="/js/localization/messages_es_AR.js" />"></script>
 		
-		<script src="../js/jquery.validate.js"></script>
-		<script src="../js/localization/messages_es_AR.js"></script>
-		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="<c:url value="/css/bootstrap.css" />">
+		<link rel="stylesheet" href="<c:url value="/css/general.css" />">
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
