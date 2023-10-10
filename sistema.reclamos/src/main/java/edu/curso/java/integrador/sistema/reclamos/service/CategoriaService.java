@@ -9,5 +9,8 @@ public interface CategoriaService {
 	List<CategoriaReclamo> recuperarCategoriasReclamos();
 	
 	CategoriaReclamo buscarCategoriaPorId(Long id);
-
+	
+	List<CategoriaReclamo> buscarCategoriaPorNombre(String nombre);
+	
+	Long nuevaCategoria(CategoriaReclamo categoriaReclamo);
 }

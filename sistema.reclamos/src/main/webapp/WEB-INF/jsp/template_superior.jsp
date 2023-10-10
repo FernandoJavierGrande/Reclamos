@@ -30,7 +30,7 @@
 		          <a class="nav-link active" aria-current="page" href="/reclamos/nuevo">Nuevo reclamo</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#">Nueva categoría</a>
+		          <a class="nav-link" href="/categoria/nueva">Nueva categoría</a>
 		        </li>
 		      </ul>
 		    </div>

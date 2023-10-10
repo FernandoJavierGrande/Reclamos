@@ -19,8 +19,6 @@ import edu.curso.java.integrador.sistema.reclamos.repository.ReclamoRepository;
 public class ReclamoServiceImpl implements ReclamosService {
 
 	@Autowired
-	private CategoriaReclamoRepository categoriaReclamoRepository;
-	@Autowired
 	private ReclamoRepository reclamoRepository; 
 	
 	@Override

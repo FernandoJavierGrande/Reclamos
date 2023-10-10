@@ -62,7 +62,13 @@ public class ReclamosController {
 	public String guardar(Model model, @Valid ReclamoForm ReclamoForm, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
-			return "/reclamos/nuevo_reclamo";
+			if(ReclamoForm.getId()== null) {
+				return "redirect:/reclamos/nuevo";
+			}
+			else{
+				String res = String.format("redirect:/reclamos/%s/editar", ReclamoForm.getId());
+				return res;
+			}
 		}
 		
 		Long idForm = ReclamoForm.getId();

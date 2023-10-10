@@ -5,6 +5,9 @@
 			<h1>Detalle del reclamo</h1>
 		Id: ${reclamo.id}<br>
 		Titulo: ${reclamo.titulo }<br>
+		Categoria: ${reclamo.categoriaReclamo.nombre}<br>
+		Fecha: ${reclamo.fechaAlta}<br>
 		Descripcion: ${reclamo.descripcion }<br>
+		
 		
 <jsp:include page="../template_inferior.jsp"></jsp:include>

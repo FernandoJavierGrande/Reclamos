@@ -20,12 +20,11 @@ public class CategoriaServiceImpl implements CategoriaService {
 	
 	@Override
 	public List<CategoriaReclamo> recuperarCategoriasReclamos() {
-		return (List<CategoriaReclamo>) categoriaReclamoRepository.findAll();
+		return (List<CategoriaReclamo>) categoriaReclamoRepository.recuperarCategoriaAsc();
 	}
 
 	@Override
 	public CategoriaReclamo buscarCategoriaPorId(Long id) {
-		System.out.println("esta en reclamo service id: "+ id);
 		Optional<CategoriaReclamo> optCategoria = categoriaReclamoRepository.findById(id);
 		
 		if(optCategoria.isPresent()) {
@@ -35,5 +34,21 @@ public class CategoriaServiceImpl implements CategoriaService {
 			return null;
 		}
 	}
-
+	@Override
+	public Long nuevaCategoria(CategoriaReclamo categoriaReclamo) {
+		categoriaReclamoRepository.save(categoriaReclamo);
+		return categoriaReclamo.getId();
+	}
+	
+	@Override
+	public List<CategoriaReclamo> buscarCategoriaPorNombre(String nombre) {
+		List<CategoriaReclamo> categorias = categoriaReclamoRepository.recuperarCategoriaPorNombre(nombre);
+		
+		if(categorias.size() > 0) {
+			return categorias;
+		}
+		else {
+			return null;
+		}
+	}
 }

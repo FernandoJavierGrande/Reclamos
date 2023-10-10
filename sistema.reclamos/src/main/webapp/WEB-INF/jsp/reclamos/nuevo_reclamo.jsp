@@ -53,7 +53,7 @@
 				if($('#formReclamo').valid() == true) {
 					$('#formReclamo').submit();
 				} else {
-					bootbox.alert('For favor completar los campos que faltan....');
+					bootbox.alert('For favor completar los campos faltantes');
 				}
 			});
 			

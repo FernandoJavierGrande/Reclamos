@@ -6,7 +6,6 @@ public class ReclamoForm {
 
 	private Long Id;
 	@NotEmpty(message ="Titulo es obligatorio")
-	@Size(min = 15, max = 100)
 	private String titulo;
 	@NotEmpty(message ="Descripcion es obligatorio")
 	private String descripcion;
