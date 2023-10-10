@@ -12,6 +12,7 @@
 			<th>Id</th>
 			<th>Ttitulo</th>
 			<th>Descripcion</th>
+			<th>Categoría</th>
 			<th></th>
 		</tr>	
 	</thead>
@@ -21,6 +22,7 @@
 				<td>${reclamo.id}</td>
 				<td>${reclamo.titulo}</td>
 				<td>${reclamo.descripcion}</td>
+				<td>${reclamo.categoriaReclamo.nombre}</td>
 				<td>
 					<a class="btn btn-primary" href="/reclamos/${reclamo.id}"> Ver</a>
 					<a class="btn btn-warning" href="/reclamos/${reclamo.id}/editar">Editar</a>

@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.curso.java.integrador.sistema.reclamos.bo.CategoriaReclamo;
 import edu.curso.java.integrador.sistema.reclamos.bo.Reclamo;
 import edu.curso.java.integrador.sistema.reclamos.controller.dto.ReclamoDTO;
 import edu.curso.java.integrador.sistema.reclamos.controller.forms.ReclamoForm;
+import edu.curso.java.integrador.sistema.reclamos.service.CategoriaService;
 import edu.curso.java.integrador.sistema.reclamos.service.ReclamosService;
 
 @Controller
@@ -23,6 +25,9 @@ public class ReclamosController {
 
 	@Autowired
 	private ReclamosService reclamosService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
 	
 	@RequestMapping(value = "/listar")
 	public String listarReclamos(Model model) {
@@ -47,6 +52,8 @@ public class ReclamosController {
 	@RequestMapping("/nuevo")
 	public String nuevo(Model model) {
 		ReclamoForm reclamoForm = new ReclamoForm();
+		List<CategoriaReclamo> categorias = categoriaService.recuperarCategoriasReclamos();
+		model.addAttribute("categorias",categorias);
 		model.addAttribute("reclamoForm", reclamoForm);
 		return "/reclamos/nuevo_reclamo";
 	}
@@ -59,24 +66,33 @@ public class ReclamosController {
 		}
 		
 		Long idForm = ReclamoForm.getId();
-		  if(idForm == null) { 
-			  Reclamo reclamo = new Reclamo();
-			  reclamo.setTitulo(ReclamoForm.getTitulo());
-			  reclamo.setDescripcion(ReclamoForm.getDescripcion());
-			  reclamosService.AltaNuevoReclamo(reclamo);
-		  } else { 
-			  Reclamo reclamo = reclamosService.buscarReclamosPorId(idForm);
-			  reclamo.setTitulo(ReclamoForm.getTitulo());
-			  reclamo.setDescripcion(ReclamoForm.getDescripcion());
-			  reclamosService.actualizarReclamo(reclamo);
-		  }
+		Long idCategoria = Long.parseLong(ReclamoForm.getCategoria());
+		CategoriaReclamo categoria = new CategoriaReclamo();
+		categoria = categoriaService.buscarCategoriaPorId(idCategoria);
+		if(categoria!=null) {
 		
+			  if(idForm == null) { 
+				  Reclamo reclamo = new Reclamo();
+				  reclamo.setTitulo(ReclamoForm.getTitulo());
+				  reclamo.setDescripcion(ReclamoForm.getDescripcion());
+				  reclamo.setCategoriaReclamo(categoria);
+				  reclamosService.AltaNuevoReclamo(reclamo);
+			  } else { 
+				  Reclamo reclamo = reclamosService.buscarReclamosPorId(idForm);
+				  reclamo.setTitulo(ReclamoForm.getTitulo());
+				  reclamo.setDescripcion(ReclamoForm.getDescripcion());
+				  reclamo.setCategoriaReclamo(categoria);
+				  reclamosService.actualizarReclamo(reclamo);
+			  }
+		}
 		return  "redirect:/reclamos/listar";
 	}
 	
 	@RequestMapping(value = "/{id}/editar")
 	public String editarReclamo(Model model, @PathVariable Long id) {
 		Reclamo reclamo = reclamosService.buscarReclamosPorId(id);
+		List<CategoriaReclamo> categorias = categoriaService.recuperarCategoriasReclamos();
+		model.addAttribute("categorias",categorias);
 		ReclamoForm reclamoForm = new ReclamoForm();
 		reclamoForm.setId(reclamo.getId());
 		reclamoForm.setDescripcion(reclamo.getDescripcion());

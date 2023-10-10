@@ -10,7 +10,16 @@ public class ReclamoForm {
 	private String titulo;
 	@NotEmpty(message ="Descripcion es obligatorio")
 	private String descripcion;
+	@NotEmpty(message="Seleccione una categoria")
+	private String categoria;
 	
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
 	public Long getId() {
 		return Id;
 	}

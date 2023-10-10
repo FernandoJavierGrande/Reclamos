@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.curso.java.integrador.sistema.reclamos.bo.CategoriaReclamo;
 import edu.curso.java.integrador.sistema.reclamos.bo.Reclamo;
 import edu.curso.java.integrador.sistema.reclamos.repository.CategoriaReclamoRepository;
 import edu.curso.java.integrador.sistema.reclamos.repository.ReclamoRepository;

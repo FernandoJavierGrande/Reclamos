@@ -22,6 +22,14 @@
 			  <form:input cssClass="form-control required" path="titulo"/>
 			  <form:errors path="titulo"></form:errors>
 			</div>
+			
+			<div class="mb-3">
+				<label class="form-label">Categoría</label>
+				<form:select cssClass="form-control required" path="categoria" >
+					<form:options items="${categorias}" itemLabel="nombre" itemValue="id"></form:options>
+				</form:select>
+				<form:errors path="categoria"></form:errors>
+			</div>
 		
 			<div class="mb-3">
 			  <label class="form-label">Descripcion</label>
@@ -42,11 +50,11 @@
 		$(document).ready(function() {
 			
 			$('#buttonEnviar').on('click', function() {
-				//if($('#formReclamo').valid() == true) {
+				if($('#formReclamo').valid() == true) {
 					$('#formReclamo').submit();
-				//} else {
-				//	bootbox.alert('For favor completar los campos que faltan....');
-				//}
+				} else {
+					bootbox.alert('For favor completar los campos que faltan....');
+				}
 			});
 			
 			$('#buttonCancelar').on('click', function(){

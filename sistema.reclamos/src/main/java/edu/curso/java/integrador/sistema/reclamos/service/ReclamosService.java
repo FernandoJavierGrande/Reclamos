@@ -2,6 +2,7 @@ package edu.curso.java.integrador.sistema.reclamos.service;
 
 import java.util.List;
 
+import edu.curso.java.integrador.sistema.reclamos.bo.CategoriaReclamo;
 import edu.curso.java.integrador.sistema.reclamos.bo.Reclamo;
 
 public interface ReclamosService {
@@ -17,5 +18,5 @@ public interface ReclamosService {
 	void borrarReclamo(Long id);
 
 	void actualizarReclamo(Reclamo reclamo);
-
+	
 }
